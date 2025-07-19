@@ -1,1 +1,374 @@
-Hello World
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Privacybeleid – Luisterslim</title>
+<meta name="description" content="Privacybeleid voor de Luisterslim app." />
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-alt: #181b22;
+    --bg-accent: #212530;
+    --text: #f5f7fa;
+    --text-muted: #b5bcc9;
+    --primary: #4f8dff;
+    --primary-accent: #82afff;
+    --danger: #ff4d61;
+    --warning: #ffb347;
+    --radius: 12px;
+    --max-w: 1080px;
+    --focus: 0 0 0 3px rgba(79,141,255,0.35);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif; 
+    background: var(--bg); color: var(--text); line-height: 1.55;
+    -webkit-font-smoothing: antialiased; font-size: 16px; 
+  }
+  header { padding: clamp(1.5rem,4vw,3rem) 1.25rem 1rem; text-align: center; }
+  header h1 { margin: 0 0 .5rem; font-size: clamp(2rem,5vw,2.75rem); letter-spacing: .5px; }
+  header p.version { margin: .25rem 0 0; font-size: .9rem; color: var(--text-muted); }
+  main { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem 4rem; }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover, a:focus-visible { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: none; box-shadow: var(--focus); border-radius: 6px; }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .9rem; }
+  pre { background: var(--bg-accent); padding: 1rem; border-radius: var(--radius); overflow-x: auto; }
+  h2, h3, h4 { scroll-margin-top: 80px; }
+  h2 { margin-top: 3rem; border-top: 1px solid #2a2f39; padding-top: 2.25rem; font-size: 1.75rem; }
+  h3 { margin-top: 2.25rem; font-size: 1.35rem; }
+  h4 { margin-top: 1.5rem; font-size: 1.1rem; letter-spacing: .5px; text-transform: uppercase; opacity: .9; }
+  p { margin: 1rem 0; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .5rem 0; }
+  blockquote { margin: 1.25rem 0; padding: 1rem 1.25rem; background: linear-gradient(135deg,var(--bg-accent),#262c36); border-left: 4px solid var(--primary); border-radius: var(--radius); color: var(--text-muted); }
+  blockquote strong { color: var(--text); }
+  .notice-inline { display: inline-block; padding: .25rem .55rem; background: #243044; border: 1px solid #2f3b50; border-radius: 6px; font-size: .75rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--primary-accent); vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 2rem; font-size: .92rem; }
+  thead th { position: sticky; top: 0; background: #222832; z-index: 2; }
+  th, td { text-align: left; vertical-align: top; padding: .75rem .65rem; border: 1px solid #2a2f39; }
+  tbody tr:nth-child(even) { background: var(--bg-alt); }
+  tbody tr:hover { background: #232a35; }
+  caption { caption-side: bottom; font-size: .75rem; text-align: left; color: var(--text-muted); padding-top: .4rem; }
+  details { background: var(--bg-alt); border: 1px solid #27303c; padding: .85rem 1rem .95rem; border-radius: var(--radius); margin: 1.25rem 0; }
+  details[open] { background: #20262f; }
+  summary { cursor: pointer; font-weight: 600; list-style: none; }
+  summary::-webkit-details-marker { display:none; }
+  .toc { background: var(--bg-alt); border: 1px solid #27303c; padding: 1rem 1.25rem 1.25rem; border-radius: var(--radius); margin: 2rem 0 3rem; }
+  .toc h2 { margin: 0 0 .75rem; border: 0; padding: 0; font-size: 1.1rem; }
+  .toc ol { margin: 0; padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+  .badge { background: #253042; padding: .2rem .45rem; border-radius: 4px; font-size: .65rem; letter-spacing: .5px; font-weight: 600; text-transform: uppercase; color: var(--primary-accent); }
+  .muted { color: var(--text-muted); }
+  footer { max-width: var(--max-w); margin: 4rem auto 0; padding: 2rem 1.25rem 4rem; border-top: 1px solid #232a30; font-size: .8rem; color: var(--text-muted); }
+  .grid-two { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+  .inline-code { background: #252c37; padding: .1rem .4rem; border-radius: 4px; font-size: .85em; }
+  .pill { display:inline-block; padding:.35rem .6rem; background:#253040; border:1px solid #314050; border-radius:20px; font-size:.65rem; letter-spacing:.5px; text-transform:uppercase; color:var(--primary-accent); }
+  @media (max-width: 820px){
+    .toc ol { columns: 1; }
+    h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Privacybeleid <span class="muted">Luisterslim</span></h1>
+    <p class="version">Versie 1.0 · Laatst bijgewerkt: <time datetime="2025-07-19">19 juli 2025</time></p>
+    <blockquote><strong>Let op:</strong> Dit document is bedoeld als gedetailleerde (AVG/GDPR) template. Vul alle <code class="inline-code">[HAAKJES]</code> in vóór publicatie en laat het reviewen door een privacyjurist / FG. Verwijder disclaimers en secties die niet van toepassing zijn.</blockquote>
+  </header>
+
+  <main>
+    <nav class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">Inhoudsopgave</h2>
+      <ol>
+        <li><a href="#verwerkingsverantwoordelijke">Verwerkingsverantwoordelijke</a></li>
+        <li><a href="#toepassingsgebied">Toepassingsgebied</a></li>
+        <li><a href="#overzicht-verwerkingen">Overzicht verwerkingen</a></li>
+        <li><a href="#toestemming-audio">Toestemming audio</a></li>
+        <li><a href="#rechtsgronden">Rechtsgronden</a></li>
+        <li><a href="#verwerkers">Verwerkers & doorgiften</a></li>
+        <li><a href="#beveiliging">Beveiliging</a></li>
+        <li><a href="#ai">AI & geautomatiseerde verwerking</a></li>
+        <li><a href="#kinderen">Kinderen</a></li>
+        <li><a href="#rechten">Uw rechten</a></li>
+        <li><a href="#beheersacties">Beheersacties</a></li>
+        <li><a href="#bewaartermijnen">Bewaartermijnen</a></li>
+        <li><a href="#cookies">Cookies & tracking</a></li>
+        <li><a href="#datalekken">Datalekken</a></li>
+        <li><a href="#internationale-doorgifte">Internationale doorgifte</a></li>
+        <li><a href="#gevoelige-inhoud">Gevoelige inhoud</a></li>
+        <li><a href="#gegevensbronnen">Gegevensbronnen</a></li>
+        <li><a href="#privacy-by-design">Privacy by Design</a></li>
+        <li><a href="#wijzigingen">Wijzigingen</a></li>
+        <li><a href="#contact">Contact & klachten</a></li>
+        <li><a href="#samenvatting">Samenvatting</a></li>
+      </ol>
+    </nav>
+
+    <section id="verwerkingsverantwoordelijke" aria-labelledby="h-verwerkingsverantwoordelijke">
+      <h2 id="h-verwerkingsverantwoordelijke">1. Verwerkingsverantwoordelijke</h2>
+      <p><strong>Naam onderneming:</strong> [Bedrijfsnaam KvK‑naam]<br>
+         <strong>Handelsnaam (app):</strong> Luisterslim<br>
+         <strong>KvK-nummer:</strong> [KvK-nummer]<br>
+         <strong>Adres:</strong> [Straat + nr], [Postcode] [Plaats], Nederland<br>
+         <strong>E‑mail (privacy):</strong> <a href="mailto:privacy@domein.nl">privacy@domein.nl</a><br>
+         <strong>Website:</strong> <a href="https://domein.nl" rel="noopener">https://domein.nl</a><br>
+         <strong>Functionaris Gegevensbescherming:</strong> [Naam / niet van toepassing]</p>
+      <p>Wij zijn verwerkingsverantwoordelijke in de zin van de Algemene Verordening Gegevensbescherming (AVG).</p>
+    </section>
+
+    <section id="toepassingsgebied" aria-labelledby="h-toepassingsgebied">
+      <h2 id="h-toepassingsgebied">2. Toepassingsgebied</h2>
+      <p>Dit privacybeleid is van toepassing op het gebruik van de Luisterslim‑app ("de App") en bijbehorende diensten (samen: "Dienst").</p>
+    </section>
+
+    <section id="overzicht-verwerkingen" aria-labelledby="h-overzicht-verwerkingen">
+      <h2 id="h-overzicht-verwerkingen">3. Overzicht verwerkingen</h2>
+      <p>Onderstaande tabel geeft een overzicht van de (persoons)gegevenscategorieën, doeleinden, rechtsgronden (art. 6 AVG) en bewaartermijnen / criteria. Verwijder of vul aan wat niet van toepassing is.</p>
+      <div style="overflow-x:auto">
+      <table aria-describedby="tbl-caption-1">
+        <thead>
+          <tr>
+            <th scope="col">Categorie</th>
+            <th scope="col">Concrete gegevens</th>
+            <th scope="col">Doel(en)</th>
+            <th scope="col">Rechtsgrond</th>
+            <th scope="col">Bewaartermijn / criterium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Audio-opnamen (door gebruiker gestart)</td>
+            <td>Geluidsbestand van gesproken tekst</td>
+            <td>Transcriberen; tonen transcript & samenvatting</td>
+            <td>Toestemming (art. 6(1)(a)) – actieve start opname</td>
+            <td>Verwijderd na succesvolle transcriptie (max. [X] uur) tenzij gebruiker opslag kiest</td>
+          </tr>
+          <tr>
+            <td>Transcripties</td>
+            <td>Tekstuele weergave van audio</td>
+            <td>Weergave & zoekfunctionaliteit; genereren samenvatting</td>
+            <td>Toestemming (a)</td>
+            <td>Tot accountverwijdering of inactiviteit [X] dagen</td>
+          </tr>
+          <tr>
+            <td>Samenvattingen</td>
+            <td>Automatisch gegenereerde tekst</td>
+            <td>Handzame weergave inhoud</td>
+            <td>Toestemming (a)</td>
+            <td>Idem transcripties</td>
+          </tr>
+          <tr>
+            <td>Accountgegevens</td>
+            <td>Naam/alias, e‑mail, (optioneel) profielfoto</td>
+            <td>Authenticatie, communicatie, beveiliging</td>
+            <td>Uitvoering overeenkomst (b); gerechtvaardigd belang beveiliging (f)</td>
+            <td>Zolang account bestaat + max. 30 dagen backup</td>
+          </tr>
+          <tr>
+            <td>App- & gebruikslogboeken (opt-in)</td>
+            <td>Crashlogs, foutcodes, apparaattype, OS-versie</td>
+            <td>Onderhoud, foutopsporing, kwaliteitsverbetering</td>
+            <td>Gerechtvaardigd belang (f) na belangenafweging</td>
+            <td>Max. 90 dagen; daarna geaggregeerd</td>
+          </tr>
+          <tr>
+            <td>Supportcommunicatie</td>
+            <td>Berichteninhoud, metadata</td>
+            <td>Beantwoorden vragen, AVG-verzoeken</td>
+            <td>Gerechtvaardigd belang (f); wettelijke verplichting (c)</td>
+            <td>Max. 2 jaar na afsluiten ticket</td>
+          </tr>
+          <tr>
+            <td>Betaalgegevens (indien van toepassing)</td>
+            <td>Transactie-ID, factuurgegevens</td>
+            <td>Licentie, administratie, boekhouding</td>
+            <td>Uitvoering (b); wettelijke verplichting (c)</td>
+            <td>Fiscale bewaarplicht 7 jaar</td>
+          </tr>
+          
+        </tbody>
+        <caption id="tbl-caption-1">Overzicht gegevensverwerkingen.</caption>
+      </table>
+      </div>
+    </section>
+
+    <section id="toestemming-audio" aria-labelledby="h-toestemming-audio">
+      <h2 id="h-toestemming-audio">4. Detail: Toestemming voor audio</h2>
+      <p>Opname start uitsluitend na uw expliciete actie (druk op opnameknop). OS‑machtigingen kunt u intrekken via instellingen. Intrekking heeft geen terugwerkende kracht; reeds gemaakte transcripties kunt u verwijderen (zie <a href="#rechten">Uw rechten</a>).</p>
+    </section>
+
+    <section id="rechtsgronden" aria-labelledby="h-rechtsgronden">
+      <h2 id="h-rechtsgronden">5. Rechtsgronden (samenvatting)</h2>
+      <ul>
+        <li><strong>Toestemming:</strong> audio, transcripties & samenvattingen (intrekbaar).</li>
+        <li><strong>Uitvoering overeenkomst:</strong> essentiële accountfunctionaliteit.</li>
+        <li><strong>Wettelijke verplichting:</strong> fiscale administratie, AVG‑afhandeling.</li>
+        <li><strong>Gerechtvaardigd belang:</strong> verbetering stabiliteit, beveiliging & misbruikpreventie (mitigaties toegepast).</li>
+      </ul>
+      <p>Wij verwerken geen bijzondere categorieën persoonsgegevens anders dan wat u mogelijk uitspreekt; vermijd gevoelige gegevens.</p>
+    </section>
+
+    <section id="verwerkers" aria-labelledby="h-verwerkers">
+      <h2 id="h-verwerkers">6. Verwerkers & doorgiften</h2>
+      <p>Wij schakelen uitsluitend verwerkers in met verwerkersovereenkomsten. Internationale doorgiften vallen onder passende waarborgen.</p>
+      <div style="overflow-x:auto">
+      <table aria-describedby="tbl-caption-2">
+        <thead>
+          <tr>
+            <th>Verwerker</th><th>Rol</th><th>Locatie (primair)</th><th>Doorgifte buiten EER?</th><th>Mechanisme</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Microsoft Azure (Speech)</td><td>Spraak → tekst</td><td>EU (bijv. West-Europa) [bevestig]</td><td>Ondersteuning mogelijk</td><td>SCC + aanvullende maatregelen</td></tr>
+          <tr><td>OpenAI</td><td>AI samenvattingen</td><td>VS / EU endpoint (indien geactiveerd)</td><td>Ja (VS)</td><td>SCC + minimale data</td></tr>
+          <tr><td>[Crash analytics]</td><td>Diagnostiek</td><td>[Locatie]</td><td>[Ja/Nee]</td><td>[SCC / adequaat]</td></tr>
+          <tr><td>[Cloud hosting]</td><td>App hosting</td><td>[Locatie]</td><td>[Ja/Nee]</td><td>[Mechanisme]</td></tr>
+        </tbody>
+        <caption id="tbl-caption-2">Lijst van verwerkers – vul aan.</caption>
+      </table>
+      </div>
+      <p><strong>Internationale doorgifte:</strong> waar data de EER verlaat passen we SCC (art. 46 AVG), TIA en minimalisatie toe. Wij verkopen geen persoonsgegevens.</p>
+    </section>
+
+    <section id="beveiliging" aria-labelledby="h-beveiliging">
+      <h2 id="h-beveiliging">7. Beveiliging</h2>
+      <ul>
+        <li>Encryptie in transit (TLS 1.2+); at rest waar haalbaar.</li>
+        <li>Least privilege, MFA voor beheerders.</li>
+        <li>Gescheiden omgevingen; NDA's.</li>
+        <li>Logging & monitoring; kwetsbaarheidsscans.</li>
+        <li>Versleutelde back-ups met beperkte retention.</li>
+        <li>DPIA spraak/AI (status: [uitgevoerd / gepland]).</li>
+        <li>Pseudonimisering (hash IP).</li>
+        <li>Incidentrespons + datalekmeldprocedure (≤72u).</li>
+      </ul>
+    </section>
+
+    <section id="ai" aria-labelledby="h-ai">
+      <h2 id="h-ai">8. AI & geautomatiseerde verwerking</h2>
+      <p>Samenvattingen worden door een taalmodel gegenereerd. Geen geautomatiseerde besluitvorming met significante gevolgen (art. 22 AVG). Controleer of ingezonden data door de modelprovider <em>niet</em> wordt gebruikt voor algemene training; pas tekst aan naar feitelijke configuratie.</p>
+    </section>
+
+    <section id="kinderen" aria-labelledby="h-kinderen">
+      <h2 id="h-kinderen">9. Kinderen</h2>
+      <p>Niet gericht op personen &lt; 16 jaar. Bij vermoeden van gebruik door minderjarige zonder vereiste toestemming: verwijdering account & gegevens.</p>
+    </section>
+
+    <section id="rechten" aria-labelledby="h-rechten">
+      <h2 id="h-rechten">10. Uw rechten</h2>
+      <p>Rechten: inzage, rectificatie, wissing, beperking, overdraagbaarheid, bezwaar, intrekking toestemming. Verzoeken via <a href="mailto:privacy@domein.nl">privacy@domein.nl</a>. Reactie binnen 1 maand (mogelijk verlengbaar).</p>
+      <p>Export formaten: [JSON / TXT / CSV]. Klachten: <a href="https://www.autoriteitpersoonsgegevens.nl" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>
+    </section>
+
+    <section id="beheersacties" aria-labelledby="h-beheersacties">
+      <h2 id="h-beheersacties">11. Praktische beheersacties</h2>
+      <ul>
+        <li>Verwijder transcripties/samenvattingen individueel.</li>
+        <li>Account verwijderen via [instellingenpad]; sanitatie binnen [30] dagen; back-ups binnen [90] dagen.</li>
+        <li>Toestemmingen (audio/diagnostiek) beheren in App & OS.</li>
+      </ul>
+    </section>
+
+    <section id="bewaartermijnen" aria-labelledby="h-bewaartermijnen">
+      <h2 id="h-bewaartermijnen">12. Bewaartermijnen (samenvatting)</h2>
+      <ul>
+        <li>Audio: verwijdering binnen [X] uur na transcriptie.</li>
+        <li>Transcripties & samenvattingen: tot accountverwijdering / inactiviteit [X] dagen.</li>
+        <li>Diagnostiek: max. 90 dagen (geaggregeerd langer).</li>
+        <li>Beveiligingslogs: 180 dagen.</li>
+        <li>Fiscale gegevens: 7 jaar.</li>
+        <li>Back-ups: rolling window [30/60] dagen.</li>
+      </ul>
+    </section>
+
+    <section id="cookies" aria-labelledby="h-cookies">
+      <h2 id="h-cookies">13. Cookies & tracking</h2>
+      <p>Huidig: [geen / uitsluitend functionele] cookies. Bij toekomstige analytische of marketingcookies tonen wij een toestemmingsmechanisme conform Telecommunicatiewet / ePrivacy.</p>
+    </section>
+
+    <section id="datalekken" aria-labelledby="h-datalekken">
+      <h2 id="h-datalekken">14. Datalekken</h2>
+      <ol>
+        <li>Interne escalatie.</li>
+        <li>Risicoanalyse.</li>
+        <li>Melding AP binnen 72u indien vereist; betrokkenen bij hoog risico.</li>
+        <li>Documentatie in datalekregister.</li>
+      </ol>
+    </section>
+
+    <section id="internationale-doorgifte" aria-labelledby="h-internationale-doorgifte">
+      <h2 id="h-internationale-doorgifte">15. Internationale doorgifte (uitleg)</h2>
+      <p>Bij doorgifte buiten EER: minimale dataset, encryptie, SCC, TIA en evaluatie regionale endpoints.</p>
+    </section>
+
+    <section id="gevoelige-inhoud" aria-labelledby="h-gevoelige-inhoud">
+      <h2 id="h-gevoelige-inhoud">16. Beperking gevoelige inhoud</h2>
+      <p>Vermijd bijzondere persoonsgegevens (art. 9) of strafrechtelijke gegevens (art. 10). Overweeg UX‑waarschuwing / automatische detectie.</p>
+    </section>
+
+    <section id="gegevensbronnen" aria-labelledby="h-gegevensbronnen">
+      <h2 id="h-gegevensbronnen">17. Gegevensbronnen</h2>
+      <p>Alle persoonsgegevens worden rechtstreeks van u verkregen; geen derde‑partij dataverrijking.</p>
+    </section>
+
+    <section id="privacy-by-design" aria-labelledby="h-privacy-by-design">
+      <h2 id="h-privacy-by-design">18. Gegevensminimalisatie & Privacy by Design</h2>
+      <ul>
+        <li>Feature‑risicoanalyse / (D)PIA waar nodig.</li>
+        <li>Data‑minimalisatie, pseudonimisering, encryptie.</li>
+        <li>Secure SDLC: code review, dependency scanning.</li>
+        <li>Release pipelines blokkeren bij kritieke kwetsbaarheden.</li>
+      </ul>
+    </section>
+
+    <section id="wijzigingen" aria-labelledby="h-wijzigingen">
+      <h2 id="h-wijzigingen">19. Wijzigingen</h2>
+      <p>Materiële wijzigingen communiceren we ≥ 30 dagen vooraf (in‑app of e‑mail) indien wettelijk vereist. Datum bovenaan wordt geactualiseerd.</p>
+    </section>
+
+    <section id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">20. Contact & klachten</h2>
+      <p><strong>Privacyvragen / rechten:</strong> <a href="mailto:privacy@domein.nl">privacy@domein.nl</a><br>
+         <strong>Beveiligingsmeldingen:</strong> <a href="mailto:security@domein.nl">security@domein.nl</a><br>
+         <strong>Postadres:</strong> [Adres]<br>
+         <strong>Toezichthouder:</strong> <a href="https://www.autoriteitpersoonsgegevens.nl" rel="noopener">Autoriteit Persoonsgegevens</a></p>
+    </section>
+
+    <section id="samenvatting" aria-labelledby="h-samenvatting">
+      <h2 id="h-samenvatting">21. Samenvatting (niet bindend)</h2>
+      <ul>
+        <li>Audio alleen na actief starten; snel verwijderd.</li>
+        <li>Transcript & samenvatting blijven tot u verwijdert of account sluit.</li>
+        <li>AI gebruikt beperkte context; geen significante profiling.</li>
+        <li>Rechten: export, verwijder, intrek toestemming.</li>
+      </ul>
+    </section>
+
+    <details>
+      <summary>⚙ Aanvullende interne aanbevelingen (verwijderen voor publicatie)</summary>
+      <ol>
+        <li>DPA's met OpenAI/Azure (EU endpoints bevestigen).</li>
+        <li>Auditlog toegang transcripties.</li>
+        <li>Hard delete confirm (object storage & search index).</li>
+        <li>Modelconfiguratie geen training op klantdata (anders tekst aanpassen).</li>
+        <li>Verwerkersregister (art. 30) bijhouden.</li>
+        <li>DPIA spraak + AI uitvoeren.</li>
+        <li>Just-in-time permissie notice.</li>
+        <li>Rate limiting & abuse detection documenteren.</li>
+        <li>Versiehistorie archiveren.</li>
+        <li>Self-service export/delete UX verbeteren.</li>
+      </ol>
+    </details>
+
+  </main>
+  <footer>
+    <p>&copy; <span id="year"></span> [Bedrijfsnaam]. Alle rechten voorbehouden.</p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
